@@ -109,6 +109,28 @@
     }
 }
 
+- (void)setRate:(float)rate {
+    _rate = rate;
+}
+
+- (void)setVolume:(float)volume withResult:(FlutterResult) result  {
+    if( volume >= 0.0 && volume <= 1.0) {
+        _volume = volume;
+        result(@YES);
+    } else {
+        result(@NO);
+    }
+}
+
+- (void)setPitch:(float)pitch withResult:(FlutterResult) result {
+    if (pitch >= 0.5 && pitch <= 2.0) {
+        _pitch = pitch;
+        result(@YES);
+    } else {
+        result(@NO);
+    }
+}
+
 - (void)stop {
     [_synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
 }
